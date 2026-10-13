@@ -1,4 +1,4 @@
-# 我的秋招邮件助手（轻量版 v1.0）
+# 我的秋招邮件助手（轻量版 v1.0.1）
 
 基于 tokunouu045-byte/job-mail-assistant 的 MIT 开源项目修改，保留原作者许可。原始参考：https://github.com/tokunouu045-byte/job-mail-assistant ，参考提交 ae1c4d86d57c4b5a4b523fd894a34539d6354847。
 
@@ -42,3 +42,7 @@
 npm test
 浏览器合成测试：安装 Playwright 与 Chromium 后 npm run test:browser。
 合成测试不等于真实邮箱验证。
+
+
+## v1.0.1 修复
+岗位资料自动保存并隔离；未保存过的方向显示空白。投递记录支持编辑、删除、重复保存更新；163 失败提示使用正确域名。清空招聘会退出记录编辑并清空公司和岗位。

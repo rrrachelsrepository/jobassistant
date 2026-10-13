@@ -1,6 +1,6 @@
 {
   "name": "my-job-mail-assistant",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Local-first recruiting email assistant for Microsoft Edge",
   "type": "module",
