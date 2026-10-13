@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "求职邮件助手 · 我的秋招版",
+  "version": "1.0.0",
+  "description": "校招与实习邮件、岗位资料、多份简历、QQ及163草稿填写、投递记录。",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "sidePanel",
+    "downloads",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://mail.qq.com/*",
+    "https://*.xiaohongshu.com/*",
+    "https://xhslink.cn/*",
+    "https://xhslink.com/*",
+    "https://*.mail.qq.com/*",
+    "https://mail.163.com/*",
+    "https://*.mail.163.com/*"
+  ],
+  "optional_host_permissions": [
+    "https://api.deepseek.com/*",
+    "https://*.xhscdn.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "读取这条招聘，准备求职邮件"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://mail.qq.com/*",
+        "https://*.mail.qq.com/*"
+      ],
+      "js": [
+        "qq-compose.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://mail.163.com/*",
+        "https://*.mail.163.com/*"
+      ],
+      "js": [
+        "netease-compose.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'; worker-src 'self'; connect-src 'self' https://api.openai.com https://api.deepseek.com https://*.xhscdn.com;"
+  }
+}

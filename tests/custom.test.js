@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {tailoredDraft,csv} from '../extension/tracker.js';
+test('campus draft does not invent internship attendance',()=>{const d=tailoredDraft('',{name:'测试',school:'学校',major:'英语',graduation:'2027届',facts:'真实经历'},'campus','外贸业务助理');assert(!d.body.includes('每周'));assert(!d.body.includes('个月'));assert(d.subject.includes('外贸业务助理'));});
+test('CSV keeps next step after company and escapes Excel formulas',()=>{const d=csv([{company:'=1+1',next:'待面试',role:'外贸'}]);assert(d.startsWith('\ufeff"公司","下一步","岗位"'));assert(d.includes("' =1+1".replace(' ','')));});
